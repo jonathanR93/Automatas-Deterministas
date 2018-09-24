@@ -1,3 +1,7 @@
+/**
+ *
+ * @author Jonathan Rincon
+ */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -29,198 +33,71 @@ public class Maquina_2 {
         size = this.input.length(); //Get size of the string
         if (index < size && input.charAt(index) == 'a') {
             index += 1; //Move to q1
-            //Starts on q1
-            if (index < size && input.charAt(index) == 'c') {
-                index += 1; //Move to q6
 
-                //Starts on q6
-                if (index < size && input.charAt(index) == 'a') {
-                    index += 1; //Move to q8
-                    //Starts on q8
-                    if (index < size && (input.charAt(index) == 'a' || input.charAt(index) == 'b')) {
-                        index += 1; //Move to q4
-                        //Starts on q4
-                        if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                            index += 1; //Loop in q4
-                        } else {
-                            accepted = false;
-                        }
-                    } else if (index < size && input.charAt(index) == 'c') {
-//                        index += 1; //Move to q9
-                        //Starts on q9
-                        if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                            index += 1; //Move to q4
-                            //Starts on q4
-                            if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                                index += 1; //Loop in q4
-                            } else {
-                                accepted = true;
-                            }
-                        } else if (input.charAt(index) == 'c') {
-//                            index += 1; //Move to q8
-                        } else {
-                            accepted = false;
-                        }
+            if (index < size && (input.charAt(index) == 'c' || input.charAt(index) == 'a')) {
 
+                while (index < size) {
+                    //Starts on q1
+                    if (index < size && input.charAt(index) == 'c') {
+                        index += 1; //Move to q2
+
+                        //Starts on q2
+                        if (index < size && input.charAt(index) == 'a') {
+                            index += 1; //Move to q1
+                        } else {
+//                        accepted = false;
+                        }
                     } else {
-                        accepted = true;
+//                    accepted = false;
                     }
-                } else {
-                    accepted = false;
                 }
+
             } else {
-                accepted = false;
-            }
-//Proceso con b:
-        } else if (index < size && input.charAt(index) == 'b') {
-            index += 1; //Move to q5
-            //Starts on q5
-            if (index < size && input.charAt(index) == 'c') {
-                index += 1; //Move to q6
-                //Starts on q6
+                //Starts on q3
                 if (index < size && input.charAt(index) == 'a') {
-                    index += 1; //Move to q8
-                    //Starts on q8
-                    if (index < size && (input.charAt(index) == 'a' || input.charAt(index) == 'b')) {
-                        index += 1; //Move to q4
-                        //Starts on q4
-                        if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                            index += 1; //Loop in q4
-                        } else {
-                            accepted = true;
-                        }
-                    } else if (index < size && input.charAt(index) == 'c') {
-//                        index += 1; //Move to q9
-                        //Starts on q9
-                        if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-//                            index += 1; //Move to q4
-                            //Starts on q4
-                            if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                                index += 1; //Loop in q4
-                            } else {
-//                                accepted = false;
-                            }
-                        } else if (input.charAt(index) == 'a') {
-//                            index += 1; //Move to q8
-                        } else {
-                            accepted = false;
-                        }
-
-                    } else {
-                        accepted = true;
-                    }
-                } else {
-                    accepted = true;
-                }
-
-            } else if (index < size && input.charAt(index) == 'a') {
-                index += 1; //Move to q7
-                //Starts on q7
-                if (index < size && input.charAt(index) == 'c') {
-                    index += 1; //Move to q6
-
-                    //Starts on q6
-                    if (index < size && input.charAt(index) == 'a') {
-                        index += 1; //Move to q8
-                        //Starts on q8
-                        if (index < size && (input.charAt(index) == 'a' || input.charAt(index) == 'b')) {
-                            index += 1; //Move to q4
-                            //Starts on q4
-                            if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                                index += 1; //Loop in q4
-                            } else {
-                                accepted = false;
-                            }
-                        } else if (index < size && input.charAt(index) == 'c') {
-//                            index += 1; //Move to q9
-                            //Starts on q9
-                            if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-//                                index += 1; //Move to q4
-                                //Starts on q4
-                                if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                                    index += 1; //Loop in q4
-                                } else {
-//                                    accepted = false;
-                                }
-                            } else if (input.charAt(index) == 'a') {
-//                            index += 1; //Move to q8
-                            } else {
-                                accepted = false;
-                            }
-
-                        } else {
-                            accepted = true;
-                        }
-                    } else {
-                        accepted = false;
-                    }
-
-                } else if (index < size && input.charAt(index) == 'a') {
                     index += 1; //Move to q4
 
-                    //Starts on q4
-                    if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                        index += 1; //Loop in q4
-                    } else {
-//                        accepted = true;
+                    while (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
+                        index += 1; //Loop to q4
                     }
-
+                    if (index < size && input.charAt(index) == 'a') {
+                        index += 1; //Move to q4
+                        accepted = false;
+                    }
                 } else {
                     accepted = false;
                 }
-
             }
-        } 
-//Proceso con c:
-        else if (index < size && input.charAt(index) == 'c') {
-            index += 1; //Move to q2
+        } //proceso con B con C
+        else if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
+            index += 1; //Move to q2 
 
-            //Starts on q2
-            if (index < size && input.charAt(index) == 'a') {
-                index += 1; //Move to q7
+            while (index < size) {
+                //Starts on q1
+                if (index < size && input.charAt(index) == 'a') {
+                    index += 1; //Move to q2
 
-                //Starts on q7
-                if (index < size && input.charAt(index) == 'c') {
-                    index += 1; //Move to q6
-
-                    //Starts on q6
-                    if (index < size && input.charAt(index) == 'a') {
-                        index += 1; //Move to q8
-                        //Starts on q8
-                        if (index < size && (input.charAt(index) == 'a' || input.charAt(index) == 'b')) {
-                            index += 1; //Move to q4
-                            //Starts on q4
-                            if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                                index += 1; //Loop in q4
-                            } else {
-                                accepted = false;
-                            }
-                        } else if (index < size && input.charAt(index) == 'c') {
-//                            index += 1; //Move to q9
-                            //Starts on q9
-                            if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-//                                index += 1; //Move to q4
-                                //Starts on q4
-                                if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                                    index += 1; //Loop in q4
-                                } else {
-                                    accepted = false;
-                                }
-                            } else if (input.charAt(index) == 'a') {
-//                            index += 1; //Move to q8
-                            } else {
-                                accepted = false;
-                            }
-
-                        } else {
-                            accepted = true;
-                        }
+                    //Starts on q2
+                    if (index < size && input.charAt(index) == 'c') {
+                        index += 1; //Move to q1
                     } else {
-                        accepted = false;
+//                        accepted = false;
                     }
-
+                } else {
+//                    accepted = false;
                 }
+            }
+            //Starts on q3
+            if (index < size && input.charAt(index) == 'a') {
+                index += 1; //Move to q4
 
+                while (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
+                    index += 1; //Loop to q4
+                }
+                if (index < size && input.charAt(index) == 'a') {
+                    index += 1; //Move to q4
+                    accepted = false;
+                }
             } else {
                 accepted = false;
             }
@@ -228,6 +105,7 @@ public class Maquina_2 {
         } else {
             accepted = false;
         }
+
         return accepted;
     }
 
