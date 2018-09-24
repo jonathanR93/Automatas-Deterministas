@@ -1,0 +1,81 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author Jonathan
+ */
+public class Maquina_3 {
+
+    private String input;
+
+    /**
+     * Constructor of the class
+     */
+    public Maquina_3(String input) {
+        this.input = input;
+    }
+
+    public boolean validation() {
+        int index = 0, size = 0; //Index over the string, and size of the string
+        boolean accepted = true; //State of the string
+        size = this.input.length(); //Get size of the string
+
+        if (index < size && input.charAt(index) == 'a') {
+            index += 1; //Move to q1
+            //Start on q1
+            if (index < size && input.charAt(index) == 'b') {
+                index += 1; //Move to q3           
+            } //Start on q0
+            else if (index < size && input.charAt(index) == 'c') {
+                accepted = false;
+            } else {
+                accepted = false;
+            }
+        } else if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
+            index += 1; //Move to q2
+            //Start on q2
+            if (index < size && input.charAt(index) == 'b') {
+                index += 1; //Move to q3
+            } //Start on q3
+            else if (index < size && input.charAt(index) == 'a') {
+                accepted = false;
+            }
+        } else {
+            accepted = false;
+        }
+        return accepted;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //Buffer to read from console
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); //Buffer to write on console
+        String input = br.readLine();
+        while (!input.equals("END")) {
+            try {
+//            String input = br.readLine(); //Read input string of the automata
+                Maquina_3 demo = new Maquina_3(input); //Create abstract machine and gives parameter
+
+                if (demo.validation()) //If input is accepted
+                {
+                    bw.write("Cadena aceptada\n");
+                } else //Input is rejected
+                {
+                    bw.write("Cadena rechazada\n");
+                }
+                bw.flush();
+                input = br.readLine();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+}
