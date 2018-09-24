@@ -1,3 +1,8 @@
+
+/**
+ *
+ * @author Jonathan Rincon
+ */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -37,26 +42,17 @@ public class Maquina_1 {
                 if (index < size && input.charAt(index) == '1') {
                     index += 1; //Move to q2
                     //Starts on q2
-                    if (index < size && input.charAt(index) == '0') {
-                        index += 1; //Move to q4    
-                        //Starts on q4
-                        while (index < size && input.charAt(index) == '0') {
-                            index += 1; //Loop in q4
+                    while (index < size && input.charAt(index) == '0') {
+                            index += 1; //Loop in q2
                         }
-                        if (index < size && input.charAt(index) == '1') {
-                            index += 1; //Move to q5
-
-                            //Starts on q5
-                            while (index < size && input.charAt(index) == '1') {
-                                index += 1; //Loop in q5
-                            }
-                            if (index < size && input.charAt(index) == '0') {
-//                                index += 1; //Move to q1
-                                accepted = false;
-                            } else {
-//                                accepted = false; //Wrong Symbol
-                                break;
-                            }
+                    if (index < size && input.charAt(index) == '1') {
+                        index += 1; //Move to q3
+                        //Starts on q3
+                        while (index < size && input.charAt(index) == '1') {
+                            index += 1; //Loop in q3
+                        }
+                        if (index < size && input.charAt(index) == '0') {
+                            index += 1; //Move to q0                         
                         } else {
 //                            accepted = false; //Wrong Symbol
                             break;
