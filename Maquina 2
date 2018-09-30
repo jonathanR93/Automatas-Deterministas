@@ -28,7 +28,6 @@ public class Maquina_2 {
         boolean accepted = false; //State of the string
         size = this.input.length(); //Get size of the string
         while (index < size) {
-
             if (index < size && input.charAt(index) == 'a') {
                 index += 1; //Move to q1
                 if (index < size && input.charAt(index) == 'c') {
@@ -59,6 +58,11 @@ public class Maquina_2 {
                                 break;
                             }
                         }
+                         if (index < size && input.charAt(index) == 'a') {
+                                index += 1;//Move to q4
+                                accepted = false;
+                                break;
+                            }
                         break;
                     }
                     break;
@@ -93,6 +97,11 @@ public class Maquina_2 {
                                     break;
                                 }
                             }
+                            if (index < size && input.charAt(index) == 'a') {
+                                index += 1;//Move to q4
+                                accepted = false;
+                                break;
+                            }
                             break;
                         }
                         break;
@@ -102,6 +111,7 @@ public class Maquina_2 {
         }
         return accepted;
     }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //Buffer to read from console
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); //Buffer to write on console
