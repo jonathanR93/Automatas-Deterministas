@@ -1,7 +1,3 @@
-/**
- *
- * @author Jonathan Rincon
- */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -14,7 +10,7 @@ import java.io.OutputStreamWriter;
  * and open the template in the editor.
  */
 /**
- * @author Jonathan
+ * @author Jonathan Rincon
  */
 public class Maquina_2 {
 
@@ -29,86 +25,83 @@ public class Maquina_2 {
 
     public boolean validation() {
         int index = 0, size = 0; //Index over the string, and size of the string
-        boolean accepted = true; //State of the string
+        boolean accepted = false; //State of the string
         size = this.input.length(); //Get size of the string
-        if (index < size && input.charAt(index) == 'a') {
-            index += 1; //Move to q1
+        while (index < size) {
 
-            if (index < size && (input.charAt(index) == 'c' || input.charAt(index) == 'a')) {
-
-                while (index < size) {
-                    //Starts on q1
-                    if (index < size && input.charAt(index) == 'c') {
-                        index += 1; //Move to q2
-
-                        //Starts on q2
-                        if (index < size && input.charAt(index) == 'a') {
-                            index += 1; //Move to q1
-                        } else {
-//                        accepted = false;
-                        }
-                    } else {
-//                    accepted = false;
-                    }
-                }
-
-            } else {
-                //Starts on q3
-                if (index < size && input.charAt(index) == 'a') {
-                    index += 1; //Move to q4
-
-                    while (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                        index += 1; //Loop to q4
-                    }
-                    if (index < size && input.charAt(index) == 'a') {
-                        index += 1; //Move to q4
-                        accepted = false;
-                    }
-                } else {
-                    accepted = false;
-                }
-            }
-        } //proceso con B con C
-        else if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-            index += 1; //Move to q2 
-
-            while (index < size) {
-                //Starts on q1
-                if (index < size && input.charAt(index) == 'a') {
-                    index += 1; //Move to q2
-
-                    //Starts on q2
-                    if (index < size && input.charAt(index) == 'c') {
-                        index += 1; //Move to q1
-                    } else {
-//                        accepted = false;
-                    }
-                } else {
-//                    accepted = false;
-                }
-            }
-            //Starts on q3
             if (index < size && input.charAt(index) == 'a') {
-                index += 1; //Move to q4
+                index += 1; //Move to q1
+                if (index < size && input.charAt(index) == 'c') {
+                    index += 1;//Move to q2
 
-                while (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
-                    index += 1; //Loop to q4
+                    if (index < size && input.charAt(index) == 'a') {
+                        index += 1; //Move to q1
+                    }
                 }
-                if (index < size && input.charAt(index) == 'a') {
-                    index += 1; //Move to q4
-                    accepted = false;
+                // Proceso con b
+                if (index == size - 1 && input.charAt(index) == 'b') {
+                    index += 1; //Move to q3  
+                    accepted = true;
+                    break;
+                } else if (index < size && input.charAt(index) == 'b') {
+                    index += 1; //Move to q3       
+                    if (index == size - 1 && input.charAt(index) == 'a') {
+                        index += 1; //Move to q4  
+                        accepted = true;
+                        break;
+                    } else if (index < size && input.charAt(index) == 'a') {
+                        index += 1;//Move to q4
+                        while (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
+                            index += 1; //Loop in q4
+                            accepted = true;
+                            if (index == size - 1 && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
+                                index += 1;//Move to q4
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    break;
                 }
             } else {
-                accepted = false;
+                if (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
+                    index += 1;//Move to q2
+                    if (index < size && input.charAt(index) == 'a') {
+                        index += 1;//Move to q1
+                        if (index < size && input.charAt(index) == 'c') {
+                            index += 1; //Move to q2
+                        }
+                    }
+                    // Proceso con b
+                    if (index == size - 1 && input.charAt(index) == 'b') {
+                        index += 1; //Move to q3  
+                        accepted = true;
+                        break;
+                    } else if (index < size && input.charAt(index) == 'b') {
+                        index += 1; //Move to q3       
+                        if (index == size - 1 && input.charAt(index) == 'a') {
+                            index += 1; //Move to q4  
+                            accepted = true;
+                            break;
+                        } else if (index < size && input.charAt(index) == 'a') {
+                            index += 1;//Move to q4
+                            while (index < size && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
+                                index += 1; //Loop in q4
+                                accepted = true;
+                                if (index == size - 1 && (input.charAt(index) == 'b' || input.charAt(index) == 'c')) {
+                                    index += 1;//Move to q4
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        break;
+                    }
+                }
             }
-
-        } else {
-            accepted = false;
         }
-
         return accepted;
     }
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //Buffer to read from console
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); //Buffer to write on console
@@ -132,5 +125,4 @@ public class Maquina_2 {
             }
         }
     }
-
 }
